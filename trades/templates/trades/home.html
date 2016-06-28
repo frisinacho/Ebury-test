@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ebury test - Ignacio Lasaosa Sáez</title>
+</head>
+<body>
+    <h1>Booked trades</h1>
+
+    <h2>Last trades:</h2>
+    {% for trade in trades_list %}
+    <li>{{ trade.ID }}</li>
+    {% endfor %}
+</body>
+</html>

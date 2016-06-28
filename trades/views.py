@@ -1,5 +1,11 @@
-from django.http import HttpResponse
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
+from trades.models import Trades
+
 
 def home(request):
-    return HttpResponse("Hello world")
+    trades = Trades.objects.all()
+    context = {
+        'trades_list': trades
+    }
+    return render(request, 'trades/home.html', context)
