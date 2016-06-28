@@ -1,0 +1,6 @@
+# Idea stuff
+.idea/
+
+# Avoid compiled bytecode
+*.pyc
+*.pyo
