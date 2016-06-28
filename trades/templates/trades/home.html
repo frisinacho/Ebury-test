@@ -24,7 +24,7 @@
                     <td>{{ trade.buy_amount }}</td>
                     <td>{{ trade.rate }}</td>
                     <td>{{ trade.date_booked|date:"d/m/Y" }} {{ trade.date_booked|time:"H:i" }}</td>
-                    <td><a href="trades/{{ trade.pk }}">Edit</a> - Delete</td>
+                    <td><a href="{% url 'trade_detail' trade.pk %}">Edit</a> - Delete</td>
                 </tr>
             {% endfor %}
         </table>
