@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ebury test - Trade detail: {{ trade.pk }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Ebury test - Trade detail: {{ trade.pk }} {% endblock %}
+
+{% block section %}
+
     <h1>Trade detail: {{ trade.pk }}</h1>
         <table class="table table-striped">
             <tr>
@@ -24,5 +23,5 @@
                 <td>{{ trade.date_booked|date:"d/m/Y" }} {{ trade.date_booked|time:"H:i" }}</td>
             </tr>
         </table>
-</body>
-</html>
+
+{% endblock %}

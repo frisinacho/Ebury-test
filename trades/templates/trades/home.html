@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ebury test - Ignacio Lasaosa Sáez</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block section %}
+
     <h1>Booked trades</h1>
 
     {% if trades_list|length > 0 %}
@@ -34,5 +31,5 @@
     {% else %}
         There's no trades.
     {% endif %}
-</body>
-</html>
+
+{% endblock %}
