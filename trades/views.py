@@ -4,7 +4,7 @@ from trades.models import Trades
 
 
 def home(request):
-    trades = Trades.objects.all()
+    trades = Trades.objects.all().order_by('-date_booked')
     context = {
         'trades_list': trades
     }
