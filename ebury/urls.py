@@ -19,5 +19,7 @@ from trades import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home)
+
+    url(r'^$', views.home),
+    url(r'^trades/(?P<pk>TR[0-9]+)$', views.detail),
 ]

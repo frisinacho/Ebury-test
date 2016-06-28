@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ebury test - Trade detail: {{ trade.pk }}</title>
+</head>
+<body>
+    <h1>Trade detail: {{ trade.pk }}</h1>
+        <table class="table table-striped">
+            <tr>
+                <td>Sell CCY</td>
+                <td>Sell Amount</td>
+                <td>Buy CCY</td>
+                <td>Buy Amount</td>
+                <td>Rate</td>
+                <td>Date Booked</td>
+            </tr>
+            <tr>
+                <td>{{ trade.sell_currency }}</td>
+                <td>{{ trade.sell_amount }}</td>
+                <td>{{ trade.buy_currency }}</td>
+                <td>{{ trade.buy_amount }}</td>
+                <td>{{ trade.rate }}</td>
+                <td>{{ trade.date_booked|date:"d/m/Y" }} {{ trade.date_booked|time:"H:i" }}</td>
+            </tr>
+        </table>
+</body>
+</html>
