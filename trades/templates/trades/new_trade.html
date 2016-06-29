@@ -6,11 +6,13 @@
 
     <h1>New trade:</h1>
 
+    {% if success_message %} <span style="color:green">{{ success_message|safe }}</span> {% endif %}
+
     <form method="post">
         {% csrf_token %}    <!-- Authorize POST -->
         {{ form.as_table }}
         <div>
-            <button type="button" class="btn btn-success">Save</button>
+            <button>Save</button>
         </div>
     </form>
 
