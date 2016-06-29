@@ -1,17 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
-# Just G3 currencies for now
-EURO = 'EUR'
-POUND = 'GBP'
-DOLLAR = 'USD'
-
-CURRENCIES = (
-    (EURO, 'EUR'),
-    (POUND, 'GBP'),
-    (DOLLAR, 'USD'),
-)
+from trades.settings import CURRENCIES
 
 
 class Trades(models.Model):
