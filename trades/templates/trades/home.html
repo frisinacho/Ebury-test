@@ -4,6 +4,8 @@
 
     <h1>Booked trades</h1>
 
+    <div id="new_trade"><a class="btn btn-primary" href="{% url 'new_trade' %}" role="button">New trade</a></div>
+
     {% if trades_list|length > 0 %}
         <h2>Last trades:</h2>
         <table class="table table-striped">

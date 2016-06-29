@@ -22,4 +22,5 @@ urlpatterns = [
 
     url(r'^$', views.home, name='trades_home'),
     url(r'^trades/(?P<pk>TR[0-9]+)$', views.detail, name='trade_detail'),
+    url(r'^trades/new$', views.create, name='new_trade'),
 ]

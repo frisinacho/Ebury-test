@@ -2,6 +2,7 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from trades.models import Trades
+from trades.forms import TradesForm
 
 
 def home(request):
@@ -36,3 +37,19 @@ def detail(request, pk):
         return render(request, 'trades/detail.html', context)
     else:
         return HttpResponseNotFound("404 Trade not found")
+
+def create(request):
+    """
+    :param request: HttpRequest
+    :return: HttpResponse
+    """
+    if request.method == 'GET':
+        form = TradesForm()
+    else:
+        form = TradesForm(request.POST)
+        if form.is_valid():
+            new_trade = form.save() # Save and return the trade
+    context = {
+        'form': form
+    }
+    return render(request, 'trades/new_trade.html', context)
