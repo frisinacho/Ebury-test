@@ -4,12 +4,12 @@
 
     <h1>Booked trades</h1>
 
-    <div id="new_trade"><a class="btn btn-primary" href="{% url 'new_trade' %}" role="button">New trade</a></div>
+    <div style="float: right; padding: 10px"><a class="btn btn-primary" href="{% url 'new_trade' %}" role="button">New trade</a></div>
 
     {% if trades_list|length > 0 %}
         <h2>Last trades:</h2>
         <table class="table table-striped">
-            <tr>
+            <tr style="font-weight: bold">
                 <td>Sell CCY</td>
                 <td>Sell Amount</td>
                 <td>Buy CCY</td>
@@ -26,7 +26,11 @@
                     <td>{{ trade.buy_amount }}</td>
                     <td>{{ trade.rate }}</td>
                     <td>{{ trade.date_booked|date:"d/m/Y" }} {{ trade.date_booked|time:"H:i" }}</td>
-                    <td><a href="{% url 'trade_detail' trade.pk %}">Edit</a> - Delete</td>
+                    <td>
+                        <a href="{% url 'trade_detail' trade.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        -
+                        <a href=""><span class="glyphicon glyphicon-remove"></span></a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
