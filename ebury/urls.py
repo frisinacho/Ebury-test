@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from trades.api import TradeListAPI
+from trades.api import TradeListAPI, TradeDetailAPI
 from trades.views import HomeView, DetailView, CreateView
 
 urlpatterns = [
@@ -28,4 +28,5 @@ urlpatterns = [
 
     # Trades API URLs
     url(r'^api/1.0/trades/$', TradeListAPI.as_view(), name='trade_list_api'),
+    url(r'^api/1.0/trades/(?P<pk>TR[0-9]+)$', TradeDetailAPI.as_view(), name='trade_detail_api'),
 ]
