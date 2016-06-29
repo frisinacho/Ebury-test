@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ebury',
     'trades',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
