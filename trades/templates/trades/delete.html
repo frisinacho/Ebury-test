@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Ebury test - Delete trade: {{ trade.pk }} {% endblock %}
+
+{% block section %}
+
+    <p>Are you sure that you want to remove this trade?</p>
+    <p>This change can't be reversed!</p>
+
+    <form method="post">
+        {% csrf_token %}    <!-- Authorize POST -->
+        <div>
+            <button class="btn btn-danger">Delete</button>
+            <a href="/" class="btn btn-default">Cancel</a>
+        </div>
+    </form>
+
+
+{% endblock %}

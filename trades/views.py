@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from trades.models import Trades
 from trades.forms import TradesForm
@@ -76,3 +76,28 @@ class CreateView(View):
             'success_message': success_message
         }
         return render(request, 'trades/new_trade.html', context)
+
+
+class DeleteView(View):
+    def get(self, request, pk):
+        """
+        :param request: HttpRequest
+        :param pk: trade ID
+        :return: HttpResponse
+        """
+
+        possible_trades = Trades.objects.filter(pk=pk)
+        trade = possible_trades[0] if len(possible_trades) == 1 else None
+        if trade is not None:
+            context = {
+                'trade': trade
+            }
+            return render(request, 'trades/delete.html', context)
+        else:
+            return HttpResponseNotFound("404 Trade not found")
+
+    def post(self, request, pk):
+        possible_trades = Trades.objects.filter(pk=pk)
+        trade = possible_trades[0] if len(possible_trades) == 1 else None
+        trade.delete()
+        return HttpResponseRedirect('/')
