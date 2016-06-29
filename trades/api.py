@@ -1,12 +1,10 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from trades.models import Trades
 from trades.serializers import TradeSerializer
+from rest_framework.generics import ListCreateAPIView
 
 
-class TradeListAPI(APIView):
+class TradeListAPI(ListCreateAPIView):
 
-    def get(self, request):
-        trades = Trades.objects.all()
-        serializer = TradeSerializer(trades, many=True)
-        return Response(serializer.data)
+    queryset = Trades.objects.all()
+    serializer_class = TradeSerializer
+
