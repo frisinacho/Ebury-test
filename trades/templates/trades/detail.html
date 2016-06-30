@@ -5,23 +5,31 @@
 {% block section %}
 
     <h1>Trade detail: {{ trade.pk }}</h1>
-        <table class="table table-striped">
-            <tr>
-                <td>Sell CCY</td>
-                <td>Sell Amount</td>
-                <td>Buy CCY</td>
-                <td>Buy Amount</td>
-                <td>Rate</td>
-                <td>Date Booked</td>
-            </tr>
-            <tr>
-                <td>{{ trade.sell_currency }}</td>
-                <td>{{ trade.sell_amount }}</td>
-                <td>{{ trade.buy_currency }}</td>
-                <td>{{ trade.buy_amount }}</td>
-                <td>{{ trade.rate }}</td>
-                <td>{{ trade.date_booked|date:"d/m/Y" }} {{ trade.date_booked|time:"H:i" }}</td>
-            </tr>
-        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Sell CCY</p>
+                <p>{{ trade.sell_currency }}</p>
+            </div>
+            <div class="col-md-4">
+                <p>Rate</p>
+                <p id="rate">{{ trade.rate }}</p>
+            </div>
+            <div class="col-md-4">
+                <p>Buy CCY</p>
+                <p>{{ trade.buy_currency }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <p>Sell Amount</p>
+                <input id="sell_amount" type="number" value="{{ trade.sell_amount }}"/>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <p>Buy Amount</p>
+                <p id="buy_amount">{{ trade.buy_amount }}</p>
+            </div>
+        </div>
 
 {% endblock %}
