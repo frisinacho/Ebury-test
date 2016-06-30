@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ebury',
     'trades',
     'rest_framework',
+    'djcelery',
 ]
 
 MIDDLEWARE_CLASSES = [
