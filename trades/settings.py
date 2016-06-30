@@ -14,3 +14,7 @@ DEFAULT_CURRENCIES = (
 
 # More currencies could be added in the main settings.py
 CURRENCIES = getattr(settings, 'CURRENCIES', DEFAULT_CURRENCIES)
+
+# EMAIL Address
+EMAIL_ADDRESS = getattr(settings, 'EMAIL_ADDRESS', 'test@ebury.com')
+EMAIL_AVAILABLE = getattr(settings, 'EMAIL_AVAILABLE', True)
