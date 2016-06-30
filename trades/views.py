@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from trades.models import Trades
@@ -9,11 +10,20 @@ from django.views.generic import View
 
 class HomeView(View):
     def get(self, request):
-        trades = Trades.objects.all().order_by('-date_booked')
-        context = {
-            'trades_list': trades
-        }
-        return render(request, 'trades/home.html', context)
+        trades_list = Trades.objects.all().order_by('-date_booked')
+        paginator = Paginator(trades_list, 5)   # Show 5 trades per page
+
+        page = request.GET.get('page')
+        try:
+            trades = paginator.page(page)
+        except PageNotAnInteger:
+            # If not an integer, return first page
+            trades = paginator.page(1)
+        except EmptyPage:
+            # If out of range, return last page
+            trades = paginator.page(paginator.num_pages)
+
+        return render(request, 'trades/home.html', {'trades_list': trades})
 
 
 class DetailView(View):

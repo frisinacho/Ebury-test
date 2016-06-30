@@ -34,6 +34,24 @@
                 </tr>
             {% endfor %}
         </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if trades_list.has_previous %}
+                    <a class="btn btn-default" href="?page=1">First</a>
+                    <a class="btn btn-default" href="?page={{ trades_list.previous_page_number }}">Prev</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ trades_list.number }} of {{ trades_list.paginator.num_pages }}
+                </span>
+
+                {% if trades_list.has_next %}
+                    <a class="btn btn-default" href="?page={{ trades_list.next_page_number }}">Next</a>
+                    <a class="btn btn-default" href="?page={{ trades_list.paginator.num_pages }}">Last</a>
+                {% endif %}
+            </span>
+        </div>
     {% else %}
         There's no trades.
     {% endif %}
