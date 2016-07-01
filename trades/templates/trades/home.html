@@ -40,15 +40,24 @@
                 {% if trades_list.has_previous %}
                     <a class="btn btn-default" href="?page=1">First</a>
                     <a class="btn btn-default" href="?page={{ trades_list.previous_page_number }}">Prev</a>
+                {% else %}
+                    <a class="btn btn-default disabled" href="#">First</a>
+                    <a class="btn btn-default disabled" href="#">Prev</a>
                 {% endif %}
 
                 <span class="current">
-                    Page {{ trades_list.number }} of {{ trades_list.paginator.num_pages }}
+                    {% for page in trades_list.paginator.page_range %}
+                        <a class="btn btn-default {% if page == trades_list.number %} active {% endif %}" href="?page={{ page }}" >{{ page }}</a>
+                    {% endfor %}
+                    <!-- Page {{ trades_list.number }} of {{ trades_list.paginator.num_pages }} -->
                 </span>
 
                 {% if trades_list.has_next %}
                     <a class="btn btn-default" href="?page={{ trades_list.next_page_number }}">Next</a>
                     <a class="btn btn-default" href="?page={{ trades_list.paginator.num_pages }}">Last</a>
+                {% else %}
+                    <a class="btn btn-default disabled" href="#">Next</a>
+                    <a class="btn btn-default disabled" href="#">Last</a>
                 {% endif %}
             </span>
         </div>
