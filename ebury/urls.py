@@ -23,11 +23,11 @@ urlpatterns = [
 
     # Trades URLs
     url(r'^$', HomeView.as_view(), name='trades_home'),
-    url(r'^trades/(?P<pk>TR[0-9]+)$', DetailView.as_view(), name='trade_detail'),
+    url(r'^trades/(?P<pk>TR[A-Z0-9]+)$', DetailView.as_view(), name='trade_detail'),
     url(r'^trades/new$', CreateView.as_view(), name='new_trade'),
-    url(r'^trades/delete/(?P<pk>TR[0-9]+)$', DeleteView.as_view(), name='delete_trade'),
+    url(r'^trades/delete/(?P<pk>TR[A-Z0-9]+)$', DeleteView.as_view(), name='delete_trade'),
 
     # Trades API URLs
     url(r'^api/1.0/trades/$', TradeListAPI.as_view(), name='trade_list_api'),
-    url(r'^api/1.0/trades/(?P<pk>TR[0-9]+)$', TradeDetailAPI.as_view(), name='trade_detail_api'),
+    url(r'^api/1.0/trades/(?P<pk>TR[A-Z0-9]+)$', TradeDetailAPI.as_view(), name='trade_detail_api'),
 ]
