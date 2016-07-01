@@ -5,6 +5,9 @@
 {% block section %}
 
     <h1>Trade detail: {{ trade.pk }}</h1>
+    <form method="post">
+        {% csrf_token %}    <!-- Authorize POST -->
+
         <div class="row">
             <div class="col-md-4">
                 <p>Sell CCY</p>
@@ -31,5 +34,10 @@
                 <p id="buy_amount">{{ trade.buy_amount }}</p>
             </div>
         </div>
+
+       <div>
+           <button>Save</button>
+       </div>
+    </form>
 
 {% endblock %}
