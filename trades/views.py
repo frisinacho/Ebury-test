@@ -3,8 +3,9 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.crypto import random
 from trades.models import Trades
-from trades.forms import TradesForm
+from trades.forms import TradesForm, CreateForm
 from django.core.urlresolvers import reverse
 from django.views.generic import View
 from trades.settings import EMAIL_ADDRESS, EMAIL_AVAILABLE
@@ -62,7 +63,7 @@ class CreateView(View):
         :param request: HttpRequest
         :return: HttpResponse
         """
-        form = TradesForm()
+        form = CreateForm()
         context = {
             'form': form,
             'success_message': ''
@@ -75,6 +76,17 @@ class CreateView(View):
         :return: HttpResponse
         """
         success_message = ''
+        request.POST = request.POST.copy()
+
+        # Generate Auto-ID
+        trade_id = 'TR'
+        for i in range(7):
+            trade_id += random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        while Trades.objects.filter(ID=[trade_id]).count():
+            trade_id = 'TR'
+            for i in range(7):
+                trade_id += random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        request.POST['ID'] = trade_id
         form = TradesForm(request.POST)
         if form.is_valid():
             new_trade = form.save()  # Save and return the trade
