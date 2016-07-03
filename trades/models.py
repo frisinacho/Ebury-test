@@ -13,3 +13,13 @@ class Trades(models.Model):
     buy_amount = models.DecimalField(max_digits=9, decimal_places=2)
     rate = models.FloatField(default="")
     date_booked = models.DateTimeField(auto_now_add=True)   # Automatic generation when created
+
+
+class Rates(models.Model):
+
+    eur2usd = models.FloatField(default="")
+    eur2gbp = models.FloatField(default="")
+    gbp2eur = models.FloatField(default="")
+    gbp2usd = models.FloatField(default="")
+    usd2eur = models.FloatField(default="")
+    usd2gbp = models.FloatField(default="")
